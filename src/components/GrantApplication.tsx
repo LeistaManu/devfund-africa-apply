@@ -330,9 +330,24 @@ const GrantApplication = () => {
 
   return (
     <div className="min-h-screen bg-background py-8 px-4">
+      {/* Banner at the top */}
+      <div className="text-center mb-8">
+        <img 
+          src="images/prom2.jpg" 
+          alt="Promotional Banner" 
+          className="max-w-full h-auto rounded-lg mx-auto mb-4"
+        />
+      </div>
+
       <div className="max-w-2xl mx-auto">
         <Card>
           <CardHeader className="text-center">
+            {/* Logo */}
+            <img 
+              src="images/prologo.jpg" 
+              alt="African Dev't Funds Logo" 
+              className="w-32 h-auto mx-auto mb-4 rounded-lg"
+            />
             <CardTitle className="text-2xl font-bold">African Dev't Funds</CardTitle>
             <p className="text-muted-foreground">Apply for Free Development Grants</p>
           </CardHeader>
@@ -377,6 +392,15 @@ const GrantApplication = () => {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Footer image */}
+      <div className="text-center mt-8">
+        <img 
+          src="images/transac2.jpeg" 
+          alt="Transaction Proof" 
+          className="max-w-full h-auto rounded-lg mx-auto"
+        />
       </div>
     </div>
   );
