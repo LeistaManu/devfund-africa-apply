@@ -266,14 +266,14 @@ const GrantApplication = () => {
 
             <Card className="bg-muted/50">
               <CardHeader>
-                <CardTitle className="text-lg">Insurance Premium (20%)</CardTitle>
+                <CardTitle className="text-lg">Insurance Premium Fee</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">
                   {insurancePremium.toFixed(2)} {displayCurrency.currency}
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
-                  This is the insurance premium fee you need to pay (20% of requested amount)
+                  This is the insurance premium fee you need to pay
                 </p>
               </CardContent>
             </Card>
