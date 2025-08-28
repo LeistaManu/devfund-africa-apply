@@ -127,7 +127,7 @@ const GrantApplication = () => {
       `Insurance Premium: ${insurancePremium.toFixed(2)} ${displayCurrency.currency}%0A` +
       `Purpose: ${formData.purpose}`;
 
-    window.location.href = `https://wa.me/254718663469?text=${message}`;
+    window.location.href = `https://wa.me/+255780361330?text=${message}`;
   };
 
   const renderStep = () => {
