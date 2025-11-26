@@ -43,7 +43,7 @@ const GrantApplication = () => {
 
   // Calculate insurance premium when amount or country changes
   useEffect(() => {
-    const premium = formData.amount * 0.2; // 20% of amount
+    const premium = formData.amount * 0.1; // 10% of amount
     if (formData.country && exchangeRates[formData.country]) {
       const countryInfo = exchangeRates[formData.country];
       setDisplayCurrency(countryInfo);
@@ -245,23 +245,19 @@ const GrantApplication = () => {
         return (
           <div className="space-y-6">
             <div className="space-y-4">
-              <Label className="text-lg font-semibold">Grant Amount (USD)</Label>
-              <div className="space-y-4">
-                <div className="px-4">
-                  <Slider
-                    value={[formData.amount]}
-                    onValueChange={(value) => updateField('amount', value[0])}
-                    max={5000}
-                    min={10}
-                    step={10}
-                    className="w-full"
-                  />
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">${formData.amount}</div>
-                  <div className="text-sm text-muted-foreground">Grant Amount Requested</div>
-                </div>
-              </div>
+              <Label htmlFor="amount" className="text-lg font-semibold">Grant Amount (USD) *</Label>
+              <Input
+                id="amount"
+                type="number"
+                value={formData.amount}
+                onChange={(e) => updateField('amount', Number(e.target.value))}
+                placeholder="Enter grant amount in USD"
+                min={10}
+                max={5000}
+              />
+              <p className="text-sm text-muted-foreground">
+                Enter an amount between $10 and $5,000
+              </p>
             </div>
 
             <Card className="bg-muted/50">
