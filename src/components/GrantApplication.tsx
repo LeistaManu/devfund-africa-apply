@@ -38,19 +38,19 @@ const GrantApplication = () => {
     consent: false
   });
 
-  const [insurancePremium, setInsurancePremium] = useState(0);
+  const [registrationFee, setRegistrationFee] = useState(0);
   const [displayCurrency, setDisplayCurrency] = useState({ currency: 'USD', rate: 1 });
 
-  // Calculate insurance premium when amount or country changes
+  // Calculate registration fee when amount or country changes
   useEffect(() => {
-    const premium = formData.amount * 0.1; // 10% of amount
+    const fee = formData.amount * 0.1; // 10% of amount
     if (formData.country && exchangeRates[formData.country]) {
       const countryInfo = exchangeRates[formData.country];
       setDisplayCurrency(countryInfo);
-      setInsurancePremium(premium * countryInfo.rate);
+      setRegistrationFee(fee * countryInfo.rate);
     } else {
       setDisplayCurrency({ currency: 'USD', rate: 1 });
-      setInsurancePremium(premium);
+      setRegistrationFee(fee);
     }
   }, [formData.amount, formData.country]);
 
@@ -124,7 +124,7 @@ const GrantApplication = () => {
       `Country: ${formData.country}%0A` +
       `Payment Line: ${formData.paymentLine}%0A` +
       `Amount Requested: $${formData.amount}%0A` +
-      `Insurance Premium: ${insurancePremium.toFixed(2)} ${displayCurrency.currency}%0A` +
+      `Registration Fee: ${registrationFee.toFixed(2)} ${displayCurrency.currency}%0A` +
       `Purpose: ${formData.purpose}`;
 
     window.location.href = `https://wa.me/+254769999807?text=${message}`;
@@ -262,14 +262,14 @@ const GrantApplication = () => {
 
             <Card className="bg-muted/50">
               <CardHeader>
-                <CardTitle className="text-lg">Insurance Premium Fee</CardTitle>
+                <CardTitle className="text-lg">Registration Fee</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">
-                  {insurancePremium.toFixed(2)} {displayCurrency.currency}
+                  {registrationFee.toFixed(2)} {displayCurrency.currency}
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
-                  This is the insurance premium fee you need to pay
+                  This is the registration fee you need to pay
                 </p>
               </CardContent>
             </Card>
@@ -301,7 +301,7 @@ const GrantApplication = () => {
                 <p><strong>Country:</strong> {formData.country}</p>
                 <p><strong>Payment Line:</strong> {formData.paymentLine}</p>
                 <p><strong>Grant Amount:</strong> ${formData.amount}</p>
-                <p><strong>Insurance Premium:</strong> {insurancePremium.toFixed(2)} {displayCurrency.currency}</p>
+                <p><strong>Registration Fee:</strong> {registrationFee.toFixed(2)} {displayCurrency.currency}</p>
                 <p><strong>Purpose:</strong> {formData.purpose}</p>
               </div>
             </div>
